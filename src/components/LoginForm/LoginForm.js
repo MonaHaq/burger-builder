@@ -1,6 +1,10 @@
+
 import "./LoginForm.style.css";
 
 function LoginForm() {
+
+
+
   return (
     <div class="Auth">
       <form>
@@ -10,7 +14,7 @@ function LoginForm() {
             type="email"
             className="InputElement"
             placeholder="E-mail Address"
-            value=""
+            //value=""
           />
         </div>
         <div className="Input">
@@ -19,7 +23,7 @@ function LoginForm() {
             type="password"
             className="InputElement"
             placeholder="Password"
-            value=""
+            //value=""
           />
         </div>
         <button className="Button Success">SUBMIT</button>

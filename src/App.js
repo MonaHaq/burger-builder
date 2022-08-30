@@ -7,8 +7,6 @@ import Actions from "./components/Actions/Actions";
 import "./styles.css";
 import { getByDisplayValue } from "@testing-library/react";
 
-
-
 export default function App() {
   const [showLogin, setShowLogin] = useState(false);
   const [lettuceCount, setLettuceCount] = useState(0);
@@ -20,7 +18,6 @@ export default function App() {
     // showLogin = true;
     setShowLogin(true);
     console.log("log in clicked");
-
   };
 
   const handleCheeseIncrement = () => {
@@ -55,30 +52,41 @@ export default function App() {
     setMeatCount(meatCount - 1);
   };
 
-  const lettuceProps = {lettuceCount, handleLettuceIncrement, handleLettuceDecrement};
-  const cheeseProps = {cheeseCount, handleCheeseIncrement, handleCheeseDecrement};
-  const baconProps = {baconCount, handleBaconIncrement, handleBaconDecrement};
-  const meatProps = {meatCount, handleMeatIncrement, handleMeatDecrement};
-
+  const lettuceProps = {
+    lettuceCount,
+    handleLettuceIncrement,
+    handleLettuceDecrement,
+  };
+  const cheeseProps = {
+    cheeseCount,
+    handleCheeseIncrement,
+    handleCheeseDecrement,
+  };
+  const baconProps = { baconCount, handleBaconIncrement, handleBaconDecrement };
+  const meatProps = { meatCount, handleMeatIncrement, handleMeatDecrement };
 
   return (
     <div className="App">
       <Header onLoginClick={handleLoginClick} />
       {showLogin && <LoginForm />}
 
-      <Burger
-        lettuceCount={lettuceCount}
-        baconCount={baconCount}
-        cheeseCount={cheeseCount}
-        meatCount={meatCount}
-      />
+      {!showLogin && (
+        <>
+          <Burger
+            lettuceCount={lettuceCount}
+            baconCount={baconCount}
+            cheeseCount={cheeseCount}
+            meatCount={meatCount}
+          />
 
-      <Actions
-        lettuceProps={lettuceProps}
-        meatProps={meatProps}
-        baconProps={baconProps}
-        cheeseProps={cheeseProps}
-       />
+          <Actions
+            lettuceProps={lettuceProps}
+            meatProps={meatProps}
+            baconProps={baconProps}
+            cheeseProps={cheeseProps}
+          />
+        </>
+      )}
     </div>
   );
 }
