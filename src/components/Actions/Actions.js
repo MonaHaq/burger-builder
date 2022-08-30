@@ -1,32 +1,47 @@
 import React, { useState } from "react";
+
+import Action from "./Action";
+
 import "./Actions.style.css";
 
-function Actions() {
+function Actions(props) {
+  const { baconProps, cheeseProps, lettuceProps, meatProps } = props;
+
   return (
     <div className="ActionsContainer">
       <p>
-        Current price: <strong>$3.00</strong>
+        Current price: <strong>$7.30</strong>
       </p>
-      <div className="ActionItems">
-        <div className="Label">Lettuce</div>
-        <button className="ButtonLess">Less</button>
-        <button className="ButtonMore">More</button>
-      </div>
-      <div className="ActionItems">
-        <div className="Label">Bacon</div>
-        <button className="ButtonLess">Less</button>
-        <button className="ButtonMore">More</button>
-      </div>
-      <div className="ActionItems">
-        <div className="Label">Cheese</div>
-        <button className="ButtonLess">Less</button>
-        <button className="ButtonMore">More</button>
-      </div>
-      <div className="ActionItems">
-        <div className="Label">Meat</div>
-        <button className="ButtonLess">Less</button>
-        <button className="ButtonMore">More</button>
-      </div>
+
+      <Action
+        name="Lettuce"
+        isDisabled={!lettuceProps.lettuceCount}
+        handleIncrement={lettuceProps.handleLettuceIncrement}
+        handleDecrement={lettuceProps.handleLettuceDecrement}
+      />
+
+      <Action
+        name="Bacon"
+        isDisabled={!baconProps.baconCount}
+        handleIncrement={baconProps.handleBaconIncrement}
+        handleDecrement={baconProps.handleBaconDecrement}
+      />
+
+      <Action
+        name="Cheese"
+        isDisabled={!cheeseProps.cheeseCount}
+        handleIncrement={cheeseProps.handleCheeseIncrement}
+        handleDecrement={cheeseProps.handleCheeseDecrement}
+      />
+
+      
+      <Action
+        name="Meat"
+        isDisabled={!meatProps.meatCount}
+        handleIncrement={meatProps.handleMeatIncrement}
+        handleDecrement={meatProps.handleMeatDecrement}
+      />
+
       <button className="SignUpButton">SIGN UP TO ORDER</button>
     </div>
   );

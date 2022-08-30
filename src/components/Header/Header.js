@@ -1,8 +1,9 @@
 import Logo from "../Logo/Logo";
 import "./Header.style.css";
 
+
 export default function Header(props) {
-  const  {onLoginClick}  = props;
+  const  { onLoginClick }  = props;
 
   return (
     <header className="Toolbar">
