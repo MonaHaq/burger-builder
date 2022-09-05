@@ -1,7 +1,7 @@
 import React from "react";
 import "./Burger.style.css";
 import "./Ingredients.js";
-import { useBurgerContext } from "../../App";
+import { useBurgerContext } from "../../contexts/BurgerContext";
 import Ingredients from "./Ingredients.js";
 
 function Burger(props) {

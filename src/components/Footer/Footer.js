@@ -1,9 +1,10 @@
 import React from "react";
 import Action from "./Action";
-import { useBurgerContext } from "../../App";
+import { useBurgerContext } from "../../contexts/BurgerContext";
 import "./Footer.style.css";
 
 const initialPrice = 3;
+
 const IngredientPrices = {
   meatPrice: 1.3,
   cheesePrice: 0.4,
