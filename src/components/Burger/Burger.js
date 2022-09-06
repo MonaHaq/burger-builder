@@ -5,10 +5,9 @@ import { useBurgerContext } from "../../contexts/BurgerContext";
 import Ingredients from "./Ingredients.js";
 
 function Burger(props) {
-  const { ingredientsCount } = useBurgerContext();
-  const { cheese, lettuce, bacon, meat } = ingredientsCount;
-
-  const hasIngredients = lettuce > 0 || bacon > 0 || cheese > 0 || meat > 0;
+  const { ingredients } = useBurgerContext();
+  
+  const hasIngredients = ingredients.some((ing) => ing.count > 0);
 
   return (
     <div className="Container">
@@ -18,10 +17,11 @@ function Burger(props) {
       </div>
       {hasIngredients ? (
         <>
-          <Ingredients name="cheese" count={cheese} />
-          <Ingredients name="lettuce" count={lettuce} />
-          <Ingredients name="bacon" count={bacon} />
-          <Ingredients name="meat" count={meat} />
+          {ingredients.map((ing) => {
+            return (
+              <Ingredients key={ing.name} name={ing.name} count={ing.count} />
+            );
+          })}
         </>
       ) : (
         <p>No Ingredients Added </p>

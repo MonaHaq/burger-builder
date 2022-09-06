@@ -8,7 +8,7 @@ export default function Ingredients(props) {
       {Array(count)
         .fill(null)
         .map(() => (
-          <div key={crypto.randomUUID()} className={name}></div>
+          <div key={Math.random()} className={name}></div>
         ))}
     </>
   );

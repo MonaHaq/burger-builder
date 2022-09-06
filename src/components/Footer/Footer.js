@@ -3,30 +3,14 @@ import Action from "./Action";
 import { useBurgerContext } from "../../contexts/BurgerContext";
 import "./Footer.style.css";
 
-const initialPrice = 3;
+function Actions() {
+  const { basePrice, ingredients, handleIngredientsChange } =
+    useBurgerContext();
 
-const IngredientPrices = {
-  meatPrice: 1.3,
-  cheesePrice: 0.4,
-  baconPrice: 0.7,
-  lettucePrice: 0.5,
-};
-
-function Actions(props) {
-  const { ingredientsCount, handleIngredientsChange } = useBurgerContext();
-  const {
-    bacon: baconCount,
-    cheese: cheeseCount,
-    lettuce: lettuceCount,
-    meat: meatCount,
-  } = ingredientsCount;
-  const { baconPrice, meatPrice, cheesePrice, lettucePrice } = IngredientPrices;
-  const totalPrice =
-    initialPrice +
-    baconPrice * baconCount +
-    cheesePrice * cheeseCount +
-    lettucePrice * lettuceCount +
-    meatPrice * meatCount;
+  const totalPrice = ingredients.reduce(
+    (acc, curr) => acc + curr.count * curr.price,
+    basePrice
+  );
 
   return (
     <div className="ActionsContainer">
@@ -34,29 +18,16 @@ function Actions(props) {
         Current price: <strong>${totalPrice.toFixed(2)}</strong>
       </p>
 
-      <Action
-        name="lettuce"
-        isDisabled={!lettuceCount}
-        handleChange={handleIngredientsChange}
-      />
-
-      <Action
-        name="bacon"
-        isDisabled={!baconCount}
-        handleChange={handleIngredientsChange}
-      />
-
-      <Action
-        name="cheese"
-        isDisabled={!cheeseCount}
-        handleChange={handleIngredientsChange}
-      />
-
-      <Action
-        name="meat"
-        isDisabled={!meatCount}
-        handleChange={handleIngredientsChange}
-      />
+      {ingredients.map((ing) => {
+        return (
+          <Action
+            key={ing.name}
+            name={ing.name}
+            isDisabled={!ing.count}
+            handleChange={handleIngredientsChange}
+          />
+        );
+      })}
 
       <button className="SignUpButton">SIGN UP TO ORDER</button>
     </div>
