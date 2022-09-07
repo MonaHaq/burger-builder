@@ -1,4 +1,11 @@
-import "./Ingredients.style.css";
+import PropTypes from 'prop-types';
+
+import './Ingredients.style.css';
+
+Ingredients.propTypes = {
+  name: PropTypes.string,
+  count: PropTypes.number,
+};
 
 export default function Ingredients(props) {
   const { name, count } = props;

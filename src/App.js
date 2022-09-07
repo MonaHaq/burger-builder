@@ -1,11 +1,10 @@
-import { useState } from "react";
-import Header from "./components/Header/Header";
-import LoginForm from "./components/LoginForm/LoginForm";
-import Burger from "./components/Burger/Burger";
-import Footer from "./components/Footer/Footer";
-import { BurgerProvider } from "./contexts/BurgerContext";
-
-import "./styles.css";
+import { useState } from 'react';
+import Header from './components/Header/Header';
+import LoginForm from './components/LoginForm/LoginForm';
+import Burger from './components/Burger/Burger';
+import Footer from './components/Footer/Footer';
+import { BurgerProvider } from './contexts/BurgerContext';
+import './styles.css';
 
 export default function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -15,7 +14,7 @@ export default function App() {
   };
 
   return (
-    <div className="App">
+    <div className='App'>
       <Header onLoginClick={handleLoginClick} />
       {showLogin && <LoginForm />}
 
