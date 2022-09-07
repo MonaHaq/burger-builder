@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import LoginForm from './components/LoginForm/LoginForm';
 import Burger from './components/Burger/Burger';
@@ -7,23 +7,25 @@ import { BurgerProvider } from './contexts/BurgerContext';
 import './styles.css';
 
 export default function App() {
-  const [showLogin, setShowLogin] = useState(false);
-
-  const handleLoginClick = () => {
-    setShowLogin(true);
-  };
-
   return (
     <div className='App'>
-      <Header onLoginClick={handleLoginClick} />
-      {showLogin && <LoginForm />}
-
-      {!showLogin && (
-        <BurgerProvider>
-          <Burger />
-          <Footer />
-        </BurgerProvider>
-      )}
+      <BrowserRouter>
+        <>
+          <Header />
+          <Routes>
+            <Route
+              path='/'
+              element={
+                <BurgerProvider>
+                  <Burger />
+                  <Footer />
+                </BurgerProvider>
+              }
+            />
+            <Route path='login' element={<LoginForm />} />
+          </Routes>
+        </>
+      </BrowserRouter>
     </div>
   );
 }
