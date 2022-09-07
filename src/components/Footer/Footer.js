@@ -1,24 +1,21 @@
-import React from "react";
-import Action from "./Action";
-import { useBurgerContext } from "../../contexts/BurgerContext";
-import "./Footer.style.css";
+import React from 'react';
+import Action from './Action';
+import { useBurgerContext } from '../../contexts/BurgerContext';
+import './Footer.style.css';
+
 
 function Actions() {
-  const { basePrice, ingredients, handleIngredientsChange } =
-    useBurgerContext();
+  const { basePrice, ingredients, handleIngredientsChange } = useBurgerContext();
 
-  const totalPrice = ingredients.reduce(
-    (acc, curr) => acc + curr.count * curr.price,
-    basePrice
-  );
+  const totalPrice = ingredients.reduce((acc, curr) => acc + curr.count * curr.price, basePrice);
 
   return (
-    <div className="ActionsContainer">
+    <div className='ActionsContainer'>
       <p>
         Current price: <strong>${totalPrice.toFixed(2)}</strong>
       </p>
 
-      {ingredients.map((ing) => {
+      {ingredients.map(ing => {
         return (
           <Action
             key={ing.name}
@@ -29,7 +26,7 @@ function Actions() {
         );
       })}
 
-      <button className="SignUpButton">SIGN UP TO ORDER</button>
+      <button className='SignUpButton'>SIGN UP TO ORDER</button>
     </div>
   );
 }
