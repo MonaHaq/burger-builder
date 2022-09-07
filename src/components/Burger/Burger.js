@@ -1,11 +1,13 @@
 import React from "react";
 import "./Burger.style.css";
+import "./Ingredients.js";
+import { useBurgerContext } from "../../contexts/BurgerContext";
+import Ingredients from "./Ingredients.js";
 
 function Burger(props) {
-  const { cheeseCount, lettuceCount, baconCount, meatCount } = props;
+  const { ingredients } = useBurgerContext();
   
-  const hasIngredients =
-    lettuceCount > 0 || baconCount > 0 || cheeseCount > 0 || meatCount > 0;
+  const hasIngredients = ingredients.some((ing) => ing.count > 0);
 
   return (
     <div className="Container">
@@ -15,29 +17,11 @@ function Burger(props) {
       </div>
       {hasIngredients ? (
         <>
-          {Array(cheeseCount)
-            .fill(null)
-            .map(() => (
-              <div className="Cheese"></div>
-            ))}
-
-          {Array(lettuceCount)
-            .fill(null)
-            .map(() => (
-              <div className="Lettuce"></div>
-            ))}
-
-          {Array(baconCount)
-            .fill(null)
-            .map(() => (
-              <div className="Bacon"></div>
-            ))}
-
-          {Array(meatCount)
-            .fill(null)
-            .map(() => (
-              <div className="Meat"></div>
-            ))}
+          {ingredients.map((ing) => {
+            return (
+              <Ingredients key={ing.name} name={ing.name} count={ing.count} />
+            );
+          })}
         </>
       ) : (
         <p>No Ingredients Added </p>

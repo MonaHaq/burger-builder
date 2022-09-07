@@ -79,14 +79,6 @@
   box-shadow: inset 1px 3px #c9c9c9c9;
 }
 
-.Lettuce {
-  width: 90%;
-  height: 7%;
-  background: linear-gradient(#228c1d, #91ce50);
-  margin: 2% auto;
-  border-radius: 20px;
-}
-
 .BottomBread {
   height: 13%;
   width: 80%;
@@ -94,27 +86,4 @@
   margin: 2% auto;
   box-shadow: inset -15px 0 #c15711;
   border-radius: 0 0 30px 30px;
-}
-
-.Bacon {
-  width: 80%;
-  height: 3%;
-  background: linear-gradient(#bf3813, #c45e38);
-  margin: 2% auto;
-}
-
-.Cheese {
-  width: 91%;
-  height: 4.5%;
-  background: linear-gradient(#f4d004, #d6bb22);
-  margin: 2% auto;
-  border-radius: 20px;
-}
-
-.Meat {
-  width: 82%;
-  height: 8%;
-  background: linear-gradient(#7f3608, #702205);
-  margin: 2% auto;
-  border-radius: 15px;
 }

@@ -1,8 +1,8 @@
 import React from "react";
-import "./Actions.style.css";
+import "./Footer.style.css";
 
 function Action(props) {
-  const { name, isDisabled,  handleIncrement, handleDecrement} = props;
+  const {name, isDisabled, handleChange} = props;
 
   return (
     <div className="ActionItems">
@@ -10,13 +10,13 @@ function Action(props) {
       <button
         className="ButtonLess"
         disabled={isDisabled}
-        onClick={handleDecrement}
+        onClick={() => handleChange(name, false)}
       >
         Less
       </button>
       <button
         className="ButtonMore"
-        onClick={handleIncrement}
+        onClick={() => handleChange(name, true)}
       >
         More
       </button>
